@@ -28,7 +28,7 @@ function UpdateInfo(props) {
                                                                                                                      
                     <h5> Update Restaurant</h5>                                                                      
                                                                                                                      
-                    <Link to="/">                                                                                    
+                    <Link to='/show-item'>                                                                                    
                         <img src = "https://as2.ftcdn.net/v2/jpg/02/02/93/99/1000_F_202939931_iHgLHxeBiSgNHbPvCSCdEE\
 Etl391oRLM.jpg" alt = "back" className = "BackImg"/>                                                                 
                     </Link>                                                                                          
@@ -76,7 +76,7 @@ ription ..." required/>
                                                                                                                      
                         <div className = "but">                                                                      
                             <button className = "sub"  type='submit'>                                                
-                                <Link to='/'style={{textDecoration: 'none', color: 'white'}}>                        
+                                <Link to='/show-item' style={{textDecoration: 'none', color: 'white'}}>                        
                                     Update                                                                           
                                 </Link>                                                                              
                             </button>                                                                                
