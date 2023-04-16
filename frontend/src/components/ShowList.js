@@ -5,6 +5,7 @@ import NavBar from './NavBar.js';
 import "./ShowList.css";
 
 function ShowList() {
+    const isLoggedin = true;
     const [items, setItems] = useState({
         restName: 'Taichi Bubble Tea',
         address: '247 E Broad St, Athens, GA 30601',
@@ -15,7 +16,7 @@ w1360-h1020',
         description: 'A Bubble tea spot',
     });
 
-
+    if (isLoggedin) {
     return (
         <div className='ShowList'>     
         
@@ -70,6 +71,7 @@ w1360-h1020',
             </div>                                                                                                                                                                                          
         </div>
     );
+}
 }
 
 export default ShowList;

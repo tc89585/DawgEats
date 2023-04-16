@@ -3,9 +3,9 @@ import './RestaurantCard.css';
 
 
 function RestaurantCard(props) {
-
+    const isLoggedin = true;
     const item = props.item;
-
+    if (isLoggedin) {
     return (
         <div className='card'>                                                                          
             <img src={item.image} alt={item.restName} height={200}/>                                    
@@ -22,6 +22,7 @@ al/junk-food-cartoon-design-vector.jpg" alt="food" className = "food"/>
         </div>
     );
 
+}
 }
 
 export default RestaurantCard;
