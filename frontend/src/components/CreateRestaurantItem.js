@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import "./FormStylesheet.css"
 import {Link} from 'react-router-dom';
+import NavBar from './NavBar.js';
+
 
 function CreateRestaurantItem(props) {
 
@@ -21,7 +23,8 @@ function CreateRestaurantItem(props) {
 
 
     return (
-        <div class = "CreateRestaurantItem">                                                                         
+        <div class = "CreateRestaurantItem">  
+        <NavBar/>
             <div className = " container">                                                                           
                 <div className = "header">                                                                           
                                                                                                                      
