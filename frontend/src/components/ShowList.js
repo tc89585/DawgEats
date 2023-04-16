@@ -2,6 +2,7 @@ import React, { useState} from 'react';
 import { Link } from 'react-router-dom';
 import RestaurantCard from './RestaurantCard';
 import NavBar from './NavBar.js';
+import "./ShowList.css";
 
 function ShowList() {
     const [items, setItems] = useState({
