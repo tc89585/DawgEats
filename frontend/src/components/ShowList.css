@@ -1,0 +1,52 @@
+
+h1{
+    text-align: left;
+    font-size: 50px;
+    margin-bottom: 0px;
+}
+
+
+p{
+    padding-bottom: 20px;
+    margin-left: 8px;
+	text-align: left;
+    font-size: 18px;
+    font-weight: 650;
+}
+
+.row {
+    display: table;
+}
+
+.col {
+
+    float: left;
+}
+
+.addButton{
+    border: white;
+    cursor: pointer;
+    float: right;
+     border-radius: 6px;
+    background-color: #30B700;
+    text-align: center;
+    padding: 6px;
+}
+
+button{
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    background-color: lightgray;
+    font-size: 18px;
+    margin-left: 8px;
+    padding: 5px;
+    cursor: pointer;
+    border-style: none;
+    font-weight: bold;
+    border-radius: 10%;
+}
+
+.container {
+    padding: 50px;
+
+}
+
