@@ -1,25 +1,31 @@
-import logo from './logo.svg';
 import './App.css';
+import React from 'react'
+import CreateRestaurantItem from './components/CreateRestaurantItem';
+import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import ShowList from './components/ShowList';
+import UpdateInfo from './components/UpdateInfo';
+import Createaccount from './components/Createaccount';
+import Login from './components/Login';
+import HomePage from './components/HomePage';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+    //const [Restaurant, setRestaurant] = useState([]);;                                                                                                                                                    
+
+
+    return (
+            <Router>                                                                                                                                                                                        
+            <div>                                                                                                                                                                                           
+            <Routes>                                                                                                                                                                                        
+            <Route exact path='/' element={<HomePage />} />                                                                                                                                                 
+            <Route path='/create-item' element={<CreateRestaurantItem />} />                                                                                                                                
+            <Route path='/create-user' element={<Createaccount />} />
+             <Route path='/login' element={<Login />} />
+            <Route path='/edit-item' element={<UpdateInfo />} />                                                                                                                                            
+            <Route path='/show-item' element={<ShowList />} />                                                                                                                                                                                                                                                                                             
+            </Routes>                                                                                                                                                                                       
+            </div>                                                                                                                                                                                          
+            </Router>
+    );
+};
 
 export default App;
