@@ -63,44 +63,16 @@ w1360-h1020',
                                 Delete                   
                                 
                                 </button>                                                                       
-                    </div>                                                                              
-                                                                                                        
-                    <h1 className>Your Account</h1>                                                     
-                    <p>Hello, User </p>                                                                 
-                </div>                                                                                  
-                <div>                                                                                   
-                    <div className='list'><RestaurantCard item = {items} /></div>                       
-                </div>                                                                                  
-                                                                                                        
-                <div className>                                                                         
-                    <div className = "row">                                                             
-                                                                                                        
-                        <div className ="col">                                                          
-                            <button>                                                                    
-                                <Link
-                                    style={{ textDecoration: 'none', color: 'black' }}
-                                    to='/edit-item'
-                                >                                                                       
-                                    Edit                                                                
-                                </Link>                                                                 
-                            </button>                                                                   
-                        </div>                                                                          
-                        <div className ="col">                                                          
-                            <button
-                                type='button'
-                            >                                                                           
-                                                                                                        
-                                Delete                                                                 
-                                                                                                        
-                            </button>                                                                   
-                        </div>                                                                          
-                    </div>                                                                              
-                    <br />                                                                              
-                </div>                                                                                  
-            </div>                                                                                      
+                     </div>                                                                                                                                                                              
+                    </div>                                                                                                                                                                                  
+                    <br />                                                                                                                                                                                  
+                </div>                                                                                                                                                                                      
+            </div>                                                                                                                                                                                          
         </div>
     );
 }
 
 export default ShowList;
+
+
 
