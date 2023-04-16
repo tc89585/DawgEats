@@ -30,7 +30,7 @@ function CreateRestaurantItem(props) {
                                                                                                                      
                     <h5> New Restaurant</h5>                                                                         
                                                                                                                      
-                    <Link to="/">                                                                                    
+                    <Link to='/show-item'>                                                                                    
                         <img src = "https://as2.ftcdn.net/v2/jpg/02/02/93/99/1000_F_202939931_iHgLHxeBiSgNHbPvCSCdEE\
 Etl391oRLM.jpg" alt = "back" className = "BackImg"/>                                                                 
                     </Link>                                                                                          
@@ -79,7 +79,7 @@ aceholder="Enter Description ..." required/>
                                                                                                                      
                         <div className = "but">                                                                      
                         <button  type='submit' className = "sub">                                                    
-                            <Link to='/' style={{textDecoration: 'none', color: 'white'}}>                           
+                            <Link to='/show-item' style={{textDecoration: 'none', color: 'white'}}>                           
                                 Post                                                                                 
                             </Link>                                                                                  
                         </button>                                                                                    
