@@ -9,7 +9,8 @@ import Login from './components/Login';
 import HomePage from './components/HomePage';
 
 const App = () => {
-    //const [Restaurant, setRestaurant] = useState([]);;                                                                                                                                                    
+    //const [Restaurant, setRestaurant] = useState([]);;    
+    const isLoggedin = true;
 
 
     return (
