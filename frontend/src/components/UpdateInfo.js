@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
 import "./FormStylesheet.css";
+import NavBar from './NavBar.js';
 
 function UpdateInfo(props) {
 
@@ -20,7 +21,8 @@ function UpdateInfo(props) {
 
 
     return (
-        <div class = "UpdateItem">                                                                                   
+        <div class = "UpdateItem">    
+        <NavBar/>
             <div className = " container">                                                                           
                 <div className = "header">                                                                           
                                                                                                                      
