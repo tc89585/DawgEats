@@ -90,7 +90,7 @@ w1360-h1020',
                                 type='button'
                             >                                                                           
                                                                                                         
-                                Delete                                                                 \
+                                Delete                                                                 
                                                                                                         
                             </button>                                                                   
                         </div>                                                                          
