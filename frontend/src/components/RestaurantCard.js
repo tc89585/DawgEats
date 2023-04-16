@@ -14,8 +14,7 @@ function RestaurantCard(props) {
                     {item.restName}                                                                     
                 </h2>                                                                                   
                 <div className = "container2">                                                          
-                    <img src= "https://static.vecteezy.com/system/resources/previews/003/672/373/origin\
-al/junk-food-cartoon-design-vector.jpg" alt="food" className = "food"/>                                 
+                    <img src= "https://static.vecteezy.com/system/resources/previews/003/672/373/original/junk-food-cartoon-design-vector.jpg" alt="food" className = "food"/>                                 
                     <h3>{item.cuisine}</h3>                                                             
                 </div>                                                                                  
             </div>                                                                                      

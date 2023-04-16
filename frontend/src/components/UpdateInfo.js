@@ -22,58 +22,51 @@ function UpdateInfo(props) {
 
     return (
         <div class = "UpdateItem">    
-        <NavBar/>
+            <NavBar/>
             <div className = " container">                                                                           
                 <div className = "header">                                                                           
-                                                                                                                     
+                    
                     <h5> Update Restaurant</h5>                                                                      
-                                                                                                                     
+                    
                     <Link to='/show-item'>                                                                                    
-                        <img src = "https://as2.ftcdn.net/v2/jpg/02/02/93/99/1000_F_202939931_iHgLHxeBiSgNHbPvCSCdEE\
-Etl391oRLM.jpg" alt = "back" className = "BackImg"/>                                                                 
+                        <img src = "https://as2.ftcdn.net/v2/jpg/02/02/93/99/1000_F_202939931_iHgLHxeBiSgNHbPvCSCdEEEtl391oRLM.jpg" alt = "back" className = "BackImg"/>                                                                 
                     </Link>                                                                                          
-                                                                                                                     
+                    
                 </div>                                                                                               
                 <div class = "form">                                                                                 
                     <form noValidate >                                                                               
                         <div className = "wrapper">                                                                  
                             <label> Name of Restaurant </label>                                                      
                             <input
-                                value={item.restName} onChange={handleChange} type="text" placeholder="Enter Restaur\
-ant name" required/>                                                                                                 
+                                value={item.restName} onChange={handleChange} type="text" placeholder="Enter Restaurant name" required/>                                                                                                 
                         </div>                                                                                       
                         <div className = "wrapper">                                                                  
                             <label> Address </label>                                                                 
                             <input
-                                value={item.address} onChange={handleChange} type="text" placeholder="Enter address"\
- required/>                                                                                                          
+                                value={item.address} onChange={handleChange} type="text" placeholder="Enter address" required/>                                                                                                          
                         </div>                                                                                       
                         <div className = "wrapper">                                                                  
                             <label> Contact Number </label>                                                          
                             <input
-                                value={item.contact}  onChange={handleChange}  type="text" placeholder="XXX-XXX-XXXX\
-" required/>                                                                                                         
+                                value={item.contact}  onChange={handleChange}  type="text" placeholder="XXX-XXX-XXXX" required/>                                                                                                         
                         </div>                                                                                       
                         <div className = "wrapper">                                                                  
                             <label> Cuisine </label>                                                                 
                             <input
-                                value={item.cuisine} onChange={handleChange} type="text" placeholder="Enter Cuisine"\
- required/>                                                                                                          
+                                value={item.cuisine} onChange={handleChange} type="text" placeholder="Enter Cuisine" required/>                                                                                                          
                         </div>
 
-<div className = "wrapper">                                                                  
+			<div className = "wrapper">                                                                  
                             <label> Image Url </label>                                                               
                             <input
-                                value={item.image} onChange={handleChange} type="text" placeholder="Enter image url"\
- required/>                                                                                                          
+                                value={item.image} onChange={handleChange} type="text" placeholder="Enter image url" required/>                                                                                                          
                         </div>                                                                                       
                         <div className = "wrapper">                                                                  
                             <label> Description </label>                                                             
                             <textarea
-                                value={item.description} onChange={handleChange} type="text" placeholder="Enter Desc\
-ription ..." required/>                                                                                              
+                                value={item.description} onChange={handleChange} type="text" placeholder="Enter Description ..." required/>                                                                                              
                         </div>                                                                                       
-                                                                                                                     
+                        
                         <div className = "but">                                                                      
                             <button className = "sub"  type='submit'>                                                
                                 <Link to='/show-item' style={{textDecoration: 'none', color: 'white'}}>                        
