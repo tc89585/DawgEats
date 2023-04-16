@@ -1,6 +1,7 @@
 import React, { useState} from 'react';
 import { Link } from 'react-router-dom';
 import RestaurantCard from './RestaurantCard';
+import NavBar from './NavBar.js';
 
 function ShowList() {
     const [items, setItems] = useState({
@@ -15,7 +16,9 @@ w1360-h1020',
 
 
     return (
-        <div className='ShowList'>                                                                      
+        <div className='ShowList'>     
+        
+        <NavBar/>
             <div className='container'>                                                                 
                 <div className>                                                                         
                     <br />                                                                              
