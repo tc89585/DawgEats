@@ -2,9 +2,10 @@ import React from 'react';
 import NavBar from './NavBar.js';
 import Restaurant from './Restaurant.js';
 import RestaurantCard from './RestaurantCard.js';
-import { useState } from 'react';
+import { useState} from 'react';
+import { Link } from 'react-router-dom';
 
-export default function HomePage() {
+export default function HomePage(prop) {
   /*dummy list for testing purposes*/
   const [restaurants, setRestaurants] = useState([
     {
@@ -48,16 +49,20 @@ export default function HomePage() {
 
   return (
     <div className="home-page">
-      <NavBar />
-      <a href="/create-item">
+	<NavBar />
+	{prop.isLoggedIn ? (
+	    <div>
+      <Link to="/create-item">
         <img
           src="./plus-icon.svg"
           alt="plus icon"
           id="plus-icon"
           style={{ width: 30, height: 30, cursor: 'pointer' }}
         />
-      </a>
-      <span>Add New</span>
+      </Link>
+		<span>Add New</span>
+		</div>) : (<div></div>) }
+	 
       <div className="grid">
         {restaurants.map((restaurant, index) => {
           return <RestaurantCard item={restaurants[index]} />;
