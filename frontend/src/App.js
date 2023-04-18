@@ -21,11 +21,11 @@ const App = () => {
         <Router>                                                                                                                                                                                        
 	    {isLoggedIn ? (
 		<Link to='/'>
-		    <button onClick={logOut} className="login-button">Logout</button>
+			<a onClick={logOut} href="#" class="logoutbutton">Logout and return to home</a>
 		</Link>
 	    ) : (
 		<Link to='/login'> 
-		    <button onClick={logIn} className="login-button">Login</button>
+			<a onClick={logIn} href="#" class="loginbutton">Login</a>
 		</Link>
 	    )}
             <div>                                                                                                                                                                                           
