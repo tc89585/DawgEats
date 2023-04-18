@@ -21,7 +21,7 @@ const App = () => {
         <Router>                                                                                                                                                                                        
 	    {isLoggedIn ? (
 		<Link to='/'>
-			<a onClick={logOut} href="#" class="logoutbutton">Logout and return to home</a>
+			<a onClick={logOut} href="#" class="logoutbutton">Logout</a>
 		</Link>
 	    ) : (
 		<Link to='/login'> 
