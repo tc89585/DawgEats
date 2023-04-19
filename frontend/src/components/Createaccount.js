@@ -14,13 +14,16 @@ function CreateAccount() {
             <label for="password">Confirm Password:</label><br/>
             <input type="password" id="password-field" class="login-form-field" placeholder="Confirm Password"></input>
             <br></br>
+            <br></br>
 
 	<Link to= '/'>
             <input className="button" type="submit" value="Create Account" id="login-form-submit"></input>
 	    </Link>
-	    
+        <br></br>
+        <br></br>
+
 	    <Link to= '/login'>
-	    <p> Sign In</p>
+	    <input className="button" type="submit" value="Return to login"></input>
 	    </Link>
 
 	</form>

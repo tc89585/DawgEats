@@ -5,6 +5,7 @@ function Login() {
     return (
     <form>
         <h1>DawgsEat Login</h1>
+        <br></br>
         <label for="username">Username:</label><br/>
         <input type="text" id="username" name="username" placeholder="username"/><br/>
         <label for="username">Password:</label><br/>
@@ -15,8 +16,10 @@ function Login() {
 	    </Link>
 
 	<br></br>
+    <br></br>
+
 	    <Link to= '/create-user'>
-	    <p> Create Account</p>
+	    <input type="submit" className="button" value="Create Account"></input>
 	</Link>
 
     </form>
