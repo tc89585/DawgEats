@@ -6,8 +6,10 @@ function CreateAccount() {
 	    <form>
             <h1>DawgsEat</h1>
             <h2>Create Account</h2>
+            <label for="name">Name:</label><br/>
+            <input type="text" id="name" name="name" placeholder="Name"/><br/>
             <label for="username">Username:</label><br/>
-            <input type="text" id="username" name="username" placeholder="username"/><br/>
+            <input type="text" id="username" name="username" placeholder="Last Name"/><br/>
             <label for="password">Password:</label><br/>
             <input type="password" id="password-field" class="login-form-field" placeholder="Password"></input>
             <br></br>
