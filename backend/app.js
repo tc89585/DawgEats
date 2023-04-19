@@ -1,19 +1,20 @@
-/*mongodb+srv://groupEweb:<password>@dawgeats.o982vrf.mongodb.net/?retryWrites=true&w=majority*/
 const express = require('express');
 const app = express();
-
+const mongoose = require('mongoose');
+const cors = require('cors');
 const port = process.env.PORT || 3001;
+
+const restaurants = require('./routes/api/restaurants');
+
+app.use(cors({ origin: true, credentials: true }));
+
+app.use(express.json({ extended: false }));
 
 app.get('/', (request, response) => {
   response.send('hey');
 });
 
-const mongoose = require('mongoose');
-const cors = require('cors');
-
-app.use(cors({ origin: true, credentials: true }));
-
-app.use(express.json({ extended: false }));
+app.use('/api/restaurants', restaurants);
 
 /* 
     app.get('/', (request, response) => {
@@ -26,7 +27,7 @@ const CONNECTION_STRING =
   'mongodb+srv://groupEweb:CprddcWV5VDYpakX@dawgeats.o982vrf.mongodb.net/?retryWrites=true&w=majority';
 mongoose.set('strictQuery', false);
 mongoose
-  .connect(connectionString, {
+  .connect(CONNECTION_STRING, {
     useUnifiedTopology: true,
     useNewUrlParser: true,
   })
@@ -37,3 +38,5 @@ mongoose
   .catch((error) => {
     console.log(`Error in DB connection ${error}`);
   });
+
+const Restaurant = require('./models/restaurant');

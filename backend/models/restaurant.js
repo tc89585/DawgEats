@@ -1,5 +1,20 @@
 const mongoose = require('mongoose');
-//schema -> model class -> instance of a model is a document
+
 const { Schema } = mongoose;
 
-const restaurantSchema = new Schema({});
+const restautantSchema = new Schema({
+  name: {
+    type: String,
+    required: true,
+  },
+  address: String,
+  number: String,
+  cuisine: String,
+  imageUrl: {
+    type: String,
+    required: true,
+  },
+  description: String,
+});
+
+module.exports = Restaurant = mongoose.model('restaurant', restautantSchema);
