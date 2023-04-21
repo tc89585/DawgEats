@@ -36,4 +36,64 @@ userRouter.post("/signup", async (req, res) => {
         res.status(400).json({msg: err.message});
     }
 });
-    u
+    
+//login route
+userRouter.post("/login", async (req, res) => {
+    try {
+        const {email, password} = req.body;
+        if (!email || !password) {
+            return res.status(400).json({msg: "Please enter all the required fields"};
+        }
+
+        const user = await User.findOne({email});
+        if (!user) {
+            return res
+            .status(400)
+            .send({msg: "user not found"});
+        }
+
+        const isMatch = await bcryptjs.compare(password, user.password);
+
+        if (!isMatch) {
+            return res.status(400).json({msg: "Incorrect password"});
+        }
+        const token = jwt.sign({ id: user._id}, "passwordKey");
+        res.json({token, user: { id: user._id, username: user.username}});
+
+    } catch (err) {
+        res.status(500).json({error: err.message});
+    }
+});
+
+
+//Check if token is valid
+userRouter.post("/tokenIsValid", async (req, res) => {
+    try {
+        const token = req.header("x-auth-token");
+        if (!token) {
+            return res.json(false);
+        }
+        const verified = jwt.verify(token, "passwordKey");
+        if (!verified) {
+            return res.json(false);
+        }
+        const user = await User.findById(verified.id);
+        if (!user) {
+            return res.json(true);
+        }
+
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+
+
+//gets the user credentials
+userRouter.get("/", auth, async (req, res) => {
+    const user = await User.findById(req.user);
+    res.json({
+        username: user.username,
+        id: user._id,
+    });
+    
+});
