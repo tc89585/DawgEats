@@ -1,19 +1,26 @@
-import './Login.css';
+import '../styles/Login.css';
 import { Link } from 'react-router-dom';
 
 function Login() {
   return (
     <div className="login">
+      <div className="logo-container">
+        <img
+          src="../images/logo-3.png"
+          alt="dawg-eats logo"
+          className="dawg-eats-logo"
+        />
+      </div>
       <form>
-        <h1>Dawg Eats Login</h1>
+        <h1 id="login-title">Login</h1>
         <br></br>
         <label for="username">Username:</label>
         <br />
         <input
           type="text"
-          id="username"
+          id="username-field"
           name="username"
-          placeholder="username"
+          placeholder="Username"
         />
         <br />
         <label for="username">Password:</label>
