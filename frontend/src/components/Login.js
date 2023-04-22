@@ -1,7 +1,18 @@
 import '../styles/Login.css';
 import { Link } from 'react-router-dom';
+import { useContext, useState } from 'react';
+import './Login.css';
+import { Link, useNavigate } from 'react-router-dom';
+import axios from "axios";
+
 
 function Login() {
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+  const [error, setError] = useState();
+  const [loading, setLoading] = useState(false);  
+  const navigate = useNavigate();
+  const { setUserData} = useContext(UserContext);
   return (
     <div className="login">
       <div className="logo-container">
@@ -14,7 +25,8 @@ function Login() {
       <form>
         <h1 id="login-title">Login</h1>
         <br></br>
-        <label for="username">Username:</label>
+
+        <label for="username-field">Username:</label>
         <br />
         <input
           type="text"
@@ -23,7 +35,7 @@ function Login() {
           placeholder="Username"
         />
         <br />
-        <label for="username">Password:</label>
+        <label for="password-field">Password:</label>
         <br />
         <input
           type="password"
@@ -54,5 +66,26 @@ function Login() {
       </form>
     </div>
   );
+  
+}
+
+async function handleSubmit(e) {
+    e.preventDefault();
+    setLoading(true);
+    try {
+        const loginUser = {email, password};
+        const loginRes = await axios.post("http://localhost:3000/api/users/login", loginUser);
+        setUserData({
+            token: loginRes.data.token,
+            user: loginRes.data.user,
+        });
+        localStorage.setItem.setItem("auth.token", loginRes.data.token);
+        navigate('/');
+
+
+    } catch (err) {
+        setLoading(false);
+        error.response.data.msg && setError(err.response.data.msg);
+    }
 }
 export default Login;
