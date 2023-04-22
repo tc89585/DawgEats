@@ -1,0 +1,14 @@
+.create-account {
+  width: 382px;
+  overflow: hidden;
+  margin: auto;
+  margin: 20 0 0 450px;
+  padding: 80px;
+  background: #fff;
+  border-radius: 15px;
+}
+
+.acc-img {
+  width: 300px;
+  margin: 0 auto;
+}

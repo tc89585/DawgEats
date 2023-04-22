@@ -1,5 +1,5 @@
 import React from 'react';
-import './Restaurant.css';
+import '../styles/Restaurant.css';
 
 export default function Restaurant({ name, image, description, onClick }) {
   return (
