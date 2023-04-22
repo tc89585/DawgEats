@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const Restaurant = require('../../models/restaurant');
+const Restaurant = require('../../models/user');
 const User = require('../../models/user');
 
 router.get('/', async (request, response) => {
@@ -13,6 +13,12 @@ router.get('/user/:userId', (req, res) => {
     User.findById(req.params.userId)
 	.then((item) => res.json(item.restaurants))
 	.catch((err) => res.status(404).json({noitemfound: 'No user found'}));
+});
+
+router.get('/restaurant/:id', (req, res) => {
+    Restaurant.findById(req.params.id)
+	.then((item) => res.json(item))
+	.catch((err) => res.status(404).json({noitemfound: 'No restaurant found'}));
 });
 
 router.post('/create-restaurant', (req, res) => {

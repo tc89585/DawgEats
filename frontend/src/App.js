@@ -22,10 +22,10 @@ const App = () => {
           <Route path="/create-item" element={<CreateRestaurantItem />} />
           <Route path="/create-user" element={<Createaccount />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/edit-item" element={<UpdateInfo />} />
-          <Route path="/show-item" element={<ShowList />} />
+          <Route path="/edit-item/:id" element={<UpdateInfo />} />
+          <Route path="/show-item/:id" element={<ShowList />} />
         </Routes>
-      </div>
+      </div> 
     </Router>
   );
 };
