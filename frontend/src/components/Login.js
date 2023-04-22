@@ -1,18 +1,17 @@
 import '../styles/Login.css';
 import { Link } from 'react-router-dom';
-import { useContext, useState } from 'react';
+import { useContext, useState, useNavigate } from 'react';
 import './Login.css';
-import { Link, useNavigate } from 'react-router-dom';
-import axios from "axios";
-
+import axios from 'axios';
 
 function Login() {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [error, setError] = useState();
-  const [loading, setLoading] = useState(false);  
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const { setUserData} = useContext(UserContext);
+  const { setUserData } = useContext(UserContext);
+
   return (
     <div className="login">
       <div className="logo-container">
@@ -66,26 +65,27 @@ function Login() {
       </form>
     </div>
   );
-  
-}
 
-async function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
     setLoading(true);
     try {
-        const loginUser = {email, password};
-        const loginRes = await axios.post("http://localhost:3000/api/users/login", loginUser);
-        setUserData({
-            token: loginRes.data.token,
-            user: loginRes.data.user,
-        });
-        localStorage.setItem.setItem("auth.token", loginRes.data.token);
-        navigate('/');
-
-
+      const loginUser = { email, password };
+      const loginRes = await axios.post(
+        'http://localhost:3000/api/users/login',
+        loginUser
+      );
+      setUserData({
+        token: loginRes.data.token,
+        user: loginRes.data.user,
+      });
+      localStorage.setItem.setItem('auth.token', loginRes.data.token);
+      navigate('/');
     } catch (err) {
-        setLoading(false);
-        error.response.data.msg && setError(err.response.data.msg);
+      setLoading(false);
+      error.response.data.msg && setError(err.response.data.msg);
     }
+  }
 }
+
 export default Login;
