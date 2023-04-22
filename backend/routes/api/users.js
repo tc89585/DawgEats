@@ -42,7 +42,7 @@ userRouter.post("/login", async (req, res) => {
     try {
         const {email, password} = req.body;
         if (!email || !password) {
-            return res.status(400).json({msg: "Please enter all the required fields"};
+            return res.status(400).json({msg: "Please enter all the required fields"});
         }
 
         const user = await User.findOne({email});
@@ -97,3 +97,5 @@ userRouter.get("/", auth, async (req, res) => {
     });
     
 });
+module.exports = userRouter;
+
