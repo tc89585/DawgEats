@@ -8,7 +8,7 @@ import Login from './components/Login';
 import HomePage from './components/HomePage';
 
 const App = () => {
-  const [isLoggedIn, setisLoggedIn] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
 
   return (
     <Router>

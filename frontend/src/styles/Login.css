@@ -40,7 +40,7 @@ input[type='password'] {
 }
 
 .button {
-  background-color: #d52929;
+  background-color: #ff9999;
   border: white;
   color: rgb(255, 255, 255);
   padding: 15px 32px;
@@ -48,6 +48,7 @@ input[type='password'] {
   text-decoration: none;
   font-size: auto;
   display: inline;
+  cursor: pointer;
 }
 
 h1 {

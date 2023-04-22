@@ -4,32 +4,29 @@
   margin: auto;
   margin: 20 0 0 450px;
   padding: 80px;
-  background: #fff;
+  background: #ffffff;
   border-radius: 15px;
 }
 
 .BackImg {
-  float: right;
   cursor: pointer;
-  width: 25px;
-  height: 9px;
+  width: 35px;
   border-radius: 8px;
 }
 
 .header {
   padding: 5px;
-  background-color: red;
+  background-color: #ff9999;
   height: 40px;
   display: flex;
-  align-items: center;
+  justify-content: space-evenly;
+  border-radius: 10px;
 }
 
 h5 {
   color: white;
   margin: 0px;
-  font-size: 17px;
-  padding-left: 40%;
-  padding-right: 8%;
+  font-size: 25px;
 }
 
 label {
@@ -46,7 +43,7 @@ label {
 }
 
 .form {
-  background-color: lightgray;
+  background-color: #fff;
   padding: 5%;
 }
 
@@ -62,8 +59,8 @@ textarea {
   padding: 3%;
 }
 
-but {
+/* but {
   display: flex;
   align-items: center;
   justify-content: center;
-}
+} */

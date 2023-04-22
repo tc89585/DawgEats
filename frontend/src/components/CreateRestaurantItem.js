@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import '../styles/FormStyleSheet.css';
 import { Link } from 'react-router-dom';
 import NavBar from './NavBar.js';
+import '../styles/FormStyleSheet.css';
 
 function CreateRestaurantItem(props) {
   const [item, setItem] = useState({
@@ -22,17 +23,21 @@ function CreateRestaurantItem(props) {
       <NavBar />
       <div className=" container">
         <div className="header">
-          <h5> New Restaurant</h5>
+          <div className="updateRest">
+            <h5> New Restaurant</h5>
+          </div>
 
-          <Link to="/show-item">
-            <img
-              src="https://as2.ftcdn.net/v2/jpg/02/02/93/99/1000_F_202939931_iHgLHxeBiSgNHbPvCSCdEEEtl391oRLM.jpg"
-              alt="back"
-              className="BackImg"
-            />
-          </Link>
+          <div className="back-image">
+            <Link to="/show-item">
+              <img
+                src="https://as2.ftcdn.net/v2/jpg/02/02/93/99/1000_F_202939931_iHgLHxeBiSgNHbPvCSCdEEEtl391oRLM.jpg"
+                alt="back"
+                className="BackImg"
+              />
+            </Link>
+          </div>
         </div>
-        <div class="form">
+        <div className="form">
           <form noValidate>
             <div className="wrapper">
               <label> Name of Restaurant</label>

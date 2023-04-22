@@ -23,7 +23,9 @@ function UpdateInfo(props) {
       <NavBar />
       <div className="container">
         <div className="header">
-          <h5> Update Restaurant</h5>
+          <div className="updateRest">
+            <h5> Update Restaurant</h5>
+          </div>
 
           <Link to="/show-item">
             <img

@@ -2,7 +2,7 @@ import React from 'react';
 import NavBar from './NavBar.js';
 import Restaurant from './Restaurant.js';
 import RestaurantCard from './RestaurantCard.js';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 
 export default function HomePage(prop) {

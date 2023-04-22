@@ -20,6 +20,8 @@ const NavBar = () => {
         <img src="../images/loupe.png" alt="search icon" class="search-icon" />
       </div>
 
+      <button id="login-button">Login</button>
+
       <div className="account-button">
         <Link to="/show-item">
           <img
