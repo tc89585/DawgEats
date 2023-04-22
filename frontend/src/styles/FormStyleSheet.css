@@ -1,0 +1,66 @@
+.container {
+  width: 382px;
+  overflow: hidden;
+  margin: auto;
+  margin: 20 0 0 450px;
+  padding: 80px;
+  background: #ffffff;
+  border-radius: 15px;
+}
+
+.BackImg {
+  cursor: pointer;
+  width: 35px;
+  border-radius: 8px;
+}
+
+.header {
+  padding: 5px;
+  background-color: #ff9999;
+  height: 40px;
+  display: flex;
+  justify-content: space-evenly;
+  border-radius: 10px;
+}
+
+h5 {
+  color: white;
+  margin: 0px;
+  font-size: 25px;
+}
+
+label {
+  display: inline-block;
+  width: 140px;
+  text-align: right;
+  padding-left: 5%;
+  padding-right: 10%;
+  width: 80px;
+}
+
+.wrapper {
+  padding-bottom: 8%;
+}
+
+.form {
+  background-color: #fff;
+  padding: 5%;
+}
+
+input,
+textarea {
+  width: 60%;
+  min-height: 25px;
+}
+
+.sub {
+  background-color: black;
+  color: white;
+  padding: 3%;
+}
+
+/* but {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */

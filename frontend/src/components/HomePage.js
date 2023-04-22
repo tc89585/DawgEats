@@ -2,7 +2,7 @@ import React from 'react';
 import NavBar from './NavBar.js';
 import Restaurant from './Restaurant.js';
 import RestaurantCard from './RestaurantCard.js';
-import { useState} from 'react';
+import { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 
 export default function HomePage(prop) {
@@ -49,20 +49,23 @@ export default function HomePage(prop) {
 
   return (
     <div className="home-page">
-	<NavBar />
-	{prop.isLoggedIn ? (
-	    <div>
-      <Link to="/create-item">
-        <img
-          src="./plus-icon.svg"
-          alt="plus icon"
-          id="plus-icon"
-          style={{ width: 30, height: 30, cursor: 'pointer' }}
-        />
-      </Link>
-		<span>Add New</span>
-		</div>) : (<div></div>) }
-	 
+      <NavBar />
+      {prop.isLoggedIn ? (
+        <div>
+          <Link to="/create-item">
+            <img
+              src="../images/plus-icon.svg"
+              alt="plus icon"
+              id="plus-icon"
+              style={{ width: 30, height: 30, cursor: 'pointer' }}
+            />
+          </Link>
+          <span>Add New</span>
+        </div>
+      ) : (
+        <div></div>
+      )}
+
       <div className="grid">
         {restaurants.map((restaurant, index) => {
           return <RestaurantCard item={restaurants[index]} />;
@@ -71,5 +74,3 @@ export default function HomePage(prop) {
     </div>
   );
 }
-
-
