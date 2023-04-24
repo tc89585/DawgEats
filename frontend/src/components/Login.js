@@ -1,8 +1,17 @@
 import '../styles/Login.css';
-import { Link } from 'react-router-dom';
-import { useContext, useState, useNavigate } from 'react';
-import axios from 'axios';
-import UserContext from '../context/UserContext';
+// import { Link, useNavigate } from 'react-router-dom';
+// import {Form, Button, Card, Alert, Container} from "react-bootstrap";
+// import { useContext, useState } from 'react';
+// import axios from 'axios';
+// import UserContext from '../context/UserContext';
+import React, { useState, useContext } from "react"; 
+import { Form, Button, Card, Alert, Container } from "react-bootstrap"; 
+import axios from "axios"; 
+import UserContext from "../context/UserContext"; 
+import { useNavigate, Link } from "react-router-dom";
+
+import { BrowserRouter } from 'react-router-dom';
+
 
 function Login() {
   const [email, setEmail] = useState();
@@ -66,26 +75,26 @@ function Login() {
     </div>
   );
 
-  async function handleSubmit(e) {
-    e.preventDefault();
-    setLoading(true);
-    try {
-      const loginUser = { email, password };
-      const loginRes = await axios.post(
-        'http://localhost:3000/api/users/login',
-        loginUser
-      );
-      setUserData({
-        token: loginRes.data.token,
-        user: loginRes.data.user,
-      });
-      localStorage.setItem.setItem('auth.token', loginRes.data.token);
-      navigate('/');
-    } catch (err) {
-      setLoading(false);
-      error.response.data.msg && setError(err.response.data.msg);
-    }
-  }
+  // async function handleSubmit(e) {
+  //   e.preventDefault();
+  //   setLoading(true);
+  //   try {
+  //     const loginUser = { email, password };
+  //     const loginRes = await axios.post(
+  //       'http://localhost:3001/api/users/login',
+  //       loginUser
+  //     );
+  //     setUserData({
+  //       token: loginRes.data.token,
+  //       user: loginRes.data.user,
+  //     });
+  //     localStorage.setItem.setItem('auth.token', loginRes.data.token);
+  //     navigate('/');
+  //   } catch (err) {
+  //     setLoading(false);
+  //     error.response.data.msg && setError(err.response.data.msg);
+  //   }
+  // }
 }
 
 export default Login;
