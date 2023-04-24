@@ -31,7 +31,7 @@ const App = () => {
         token = "";
       }
       const tokenResponse = await axios.post(
-        "http://localhost:3001/tokenIsValid",
+        "http://localhost:3001/api/users/tokenIsValid",
         null, 
         { headers: { "x-auth-token": token}}
       );
