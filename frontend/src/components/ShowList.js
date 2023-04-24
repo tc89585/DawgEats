@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import RestaurantCard from './RestaurantCard';
 import NavBar from './NavBar.js';
 import '../styles/ShowList.css';
@@ -7,14 +7,14 @@ import axios from 'axios';
 
 function ShowList() {
 
-	const { id } = useParams();
-
+	const { userId } = useParams();
+	const navigate = useNavigate();
 
     const [items, setItems] = useState([]);
 
     useEffect(() => {
 	axios
-	    .get(`http://localhost:3001/api/restaurants/user/${id}`)
+	    .get(`http://localhost:3001/api/restaurants/user/${userId}`)
 	    .then((res) => {
 		setItems(res.data);
 	    })
@@ -23,11 +23,19 @@ function ShowList() {
 	    });
     }, []);
 
-    //  const itemList =
-    //  items.length === 0
-    //     ? 'there is no item record!'
-    //      : items.map((item, k) => <RestaurantCard item={item} key={k} />);
-
+	const onDelete = (id) => {
+		axios
+		  .delete(`http://localhost:3001/api/restaurants/delete-restaurant/${id}/${userId}`)
+		  .then((res) => {
+		      setItems(
+			items.filter((item) => {
+				   return item._id !== id;
+			}));
+		  })
+		  .catch((err) => {
+			console.log('Error form ShowList_deleteClick');
+		  });
+	  };
 
 	return (
 		<div className="ShowList">
@@ -40,7 +48,7 @@ function ShowList() {
 				<button className="addButton">
 				  <Link
 					style={{ textDecoration: 'none', color: 'white', fontSize: 18 }}
-					to="/create-item"
+					to={`/create-item/${userId}`}
 				  >
 					Add New Restaurant
 				  </Link>
@@ -61,14 +69,15 @@ function ShowList() {
 				  <button>
 					<Link
 					  style={{ textDecoration: 'none', color: 'black' }}
-					  to={`/edit-item/${items[index]._id}`}
+					  to={`/edit-item/${items[index]._id}/edit/${userId}`}
 					>
 					  Edit
 					</Link>
 				  </button>
 				</div>
 				<div className="col">
-				  <button type="button">Delete</button>
+				  <button type="button" onClick= {() => {onDelete(items[index]._id);
+				  }}>Delete</button>
 				</div>
 			  </div>
 			  <br />
@@ -76,7 +85,6 @@ function ShowList() {
 			</div>
 				})}
 
-            {console.log(items)}
 			  </div>
 			</div>
 	
