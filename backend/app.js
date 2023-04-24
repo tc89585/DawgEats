@@ -5,6 +5,8 @@ const cors = require('cors');
 const port = process.env.PORT || 3001;
 const dotenv = require('dotenv');
 dotenv.config();
+const users = require('./routes/api/users');
+app.use('/api/users', users);
 
 const Restaurant = require('./routes/api/restaurants');
 
@@ -28,6 +30,4 @@ mongoose
   .catch((error) => {
     console.log(`Error in DB connection ${error}`);
   });
-
-
 
