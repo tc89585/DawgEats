@@ -42,25 +42,26 @@ userRouter.post('/signup', async (req, res) => {
 //login route
 userRouter.post('/login', async (req, res) => {
   try {
-    const { name, password } = req.body;
-    if (!name || !password) {
+    const { username, password } = req.body;
+    if (!username || !password) {
       return res
         .status(400)
-        .json({ msg: 'Please enter all the required fields' });
+        .json({ msg: "Please enter all the required fields" });
     }
 
-    const user = await User.findOne({ name });
+    const user = await User.findOne({username});
     if (!user) {
-      return res.status(400).send({ msg: 'user not found' });
+      return res.status(400).send({ msg: "user with this name does not exist!" });
     }
 
     const isMatch = await bcryptjs.compare(password, user.password);
 
     if (!isMatch) {
-      return res.status(400).json({ msg: 'Incorrect password' });
+        console.log(user);
+        return res.status(400).json({ msg: "Incorrect password" });
     }
-    const token = jwt.sign({ id: user._id }, 'passwordKey');
-    res.json({ token, user: { id: user._id, name: user.name } });
+    const token = jwt.sign({ id: user._id }, "passwordKey");
+    res.json({ token, user: { id: user._id, name: user.username } });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
