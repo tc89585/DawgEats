@@ -42,14 +42,14 @@ userRouter.post('/signup', async (req, res) => {
 //login route
 userRouter.post('/login', async (req, res) => {
   try {
-    const { email, password } = req.body;
-    if (!email || !password) {
+    const { name, password } = req.body;
+    if (!name || !password) {
       return res
         .status(400)
         .json({ msg: 'Please enter all the required fields' });
     }
 
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ name });
     if (!user) {
       return res.status(400).send({ msg: 'user not found' });
     }
@@ -60,7 +60,7 @@ userRouter.post('/login', async (req, res) => {
       return res.status(400).json({ msg: 'Incorrect password' });
     }
     const token = jwt.sign({ id: user._id }, 'passwordKey');
-    res.json({ token, user: { id: user._id, username: user.username } });
+    res.json({ token, user: { id: user._id, name: user.name } });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
