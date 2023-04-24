@@ -8,12 +8,12 @@ dotenv.config();
 const users = require('./routes/api/users');
 app.use('/api/users', users);
 
-const restaurants = require('./routes/api/restaurants');
+const Restaurant = require('./routes/api/restaurants');
 
 app.use(cors({ origin: true, credentials: true }));
 
 app.use(express.json({ extended: false }));
-app.use('/api/restaurants', restaurants);
+app.use('/api/restaurants', Restaurant);
 
 /*Connect to database*/
 const CONNECTION_STRING = `mongodb+srv://groupEweb:${process.env.DB_PASSWORD}@dawgeats.o982vrf.mongodb.net/?retryWrites=true&w=majority`;
@@ -30,6 +30,4 @@ mongoose
   .catch((error) => {
     console.log(`Error in DB connection ${error}`);
   });
-
-const Restaurant = require('./models/restaurant');
 
