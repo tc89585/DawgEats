@@ -31,6 +31,7 @@ const App = () => {
         token = "";
       }
       const tokenResponse = await axios.post(
+
         "http://localhost:3001/api/users/tokenIsValid",
         null, 
         { headers: { "x-auth-token": token}}
@@ -48,7 +49,7 @@ const App = () => {
     };
     checkifLoggedIn();
   }, []);
-      
+
   return (
     <UserContext.Provider value={{ userData, setUserData}} >
     <Router>
@@ -59,11 +60,11 @@ const App = () => {
             path="/"
             element={<HomePage isLoggedIn={userData} />} // TODO change state
           />
-          <Route path="/create-item" element={<CreateRestaurantItem />} />
+          <Route path="/create-item/:userId" element={<CreateRestaurantItem />} />
           <Route path="/create-user" element={<Createaccount />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/edit-item/:id" element={<UpdateInfo />} />
-          <Route path="/show-item/:id" element={<ShowList />} />
+          <Route path="/edit-item/:id/edit/:userId" element={<UpdateInfo />} />
+          <Route path="/show-item/:userId" element={<ShowList />} />
         </Routes>
       </div> 
     </Router>

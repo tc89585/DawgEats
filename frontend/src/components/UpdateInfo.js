@@ -16,6 +16,7 @@ function UpdateInfo(props) {
     });
 
     const { id } = useParams();
+    const { userId } = useParams();
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -55,9 +56,9 @@ function UpdateInfo(props) {
 
   
 
-	axios.put(`http://localhost:3001/api/restaurants/edit-restaurant/${id}`, data)
+	axios.put(`http://localhost:3001/api/restaurants/edit-restaurant/${id}/${userId}`, data)
 	    .then((res) => {
-		navigate(`/show-item/:id`);
+		navigate(`/show-item/${userId}`);
 	    })
 	    .catch((err) => {
 		console.log('Error in UpdateInfo!');
@@ -73,7 +74,7 @@ function UpdateInfo(props) {
 			    <h5> Update Restaurant</h5>
 			</div>
 
-			<Link to="/show-item">
+			<Link to={`/show-item/${userId}`}>
 			    <img
 				src="https://as2.ftcdn.net/v2/jpg/02/02/93/99/1000_F_202939931_iHgLHxeBiSgNHbPvCSCdEEEtl391oRLM.jpg"
 				alt="back"

@@ -1,21 +1,49 @@
 import React, { useState } from 'react';
 import '../styles/FormStyleSheet.css';
-import { Link } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import NavBar from './NavBar.js';
 import '../styles/FormStyleSheet.css';
+import axios from 'axios';
 
 function CreateRestaurantItem(props) {
   const [item, setItem] = useState({
-    restName: '',
+    name: '',
     address: '',
     contact: '',
     cuisine: '',
-    image: '',
+    imageUrl: '',
     description: '',
   });
 
+  const { userId } = useParams();
+  const navigate = useNavigate();
+
   const handleChange = (e) => {
     setItem({ ...item, [e.target.name]: e.target.value });
+  };
+
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+
+    axios
+      .post(`http://localhost:3001/api/restaurants/create-restaurant/${userId}`, item)
+      .then((res) => {
+        setItem({
+          name: '',
+          address: '',
+          contact: '',
+          cuisine: '',
+          imageUrl: '',
+          description: '',
+        });
+
+        // Push to /
+        navigate(`/show-item/${userId}`);
+      })
+      .catch((err) => {
+        console.log('Error in CreateRestaurant!');
+      });
   };
 
   return (
@@ -28,7 +56,7 @@ function CreateRestaurantItem(props) {
           </div>
 
           <div className="back-image">
-            <Link to="/show-item">
+            <Link to={`/show-item/${userId}`}>
               <img
                 src="https://as2.ftcdn.net/v2/jpg/02/02/93/99/1000_F_202939931_iHgLHxeBiSgNHbPvCSCdEEEtl391oRLM.jpg"
                 alt="back"
@@ -38,14 +66,14 @@ function CreateRestaurantItem(props) {
           </div>
         </div>
         <div className="form">
-          <form noValidate>
+          <form noValidate onSubmit={onSubmit}>
             <div className="wrapper">
               <label> Name of Restaurant</label>
               <input
-                value={item.restName}
+                value={item.name}
                 onChange={handleChange}
                 type="text"
-                name="restName"
+                name="name"
                 placeholder="Enter Restaurant name"
                 required
               />
@@ -64,8 +92,8 @@ function CreateRestaurantItem(props) {
             <div className="wrapper">
               <label> Contact Number </label>
               <input
-                value={item.contact}
-                name="contact"
+                value={item.number}
+                name="number"
                 onChange={handleChange}
                 type="text"
                 placeholder="XXX-XXX-XXXX"
@@ -87,9 +115,9 @@ function CreateRestaurantItem(props) {
             <div className="wrapper">
               <label> Profile Image Url </label>
               <input
-                value={item.image}
+                value={item.imageUrl}
                 onChange={handleChange}
-                name="image"
+                name="imageUrl"
                 type="text"
                 placeholder="Enter image url"
                 required
@@ -108,13 +136,8 @@ function CreateRestaurantItem(props) {
             </div>
 
             <div className="but">
-              <button type="submit" className="sub">
-                <Link
-                  to="/show-item"
-                  style={{ textDecoration: 'none', color: 'white' }}
-                >
+              <button className="sub" type="submit">
                   Post
-                </Link>
               </button>
             </div>
           </form>

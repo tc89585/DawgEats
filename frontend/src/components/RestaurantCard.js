@@ -6,9 +6,9 @@ function RestaurantCard(props) {
 
   return (
     <div className="card">
-      <img src={item.image} alt={item.restName} height={200} />
+      <img src={item.imageUrl} alt={item.name} height={200} />
       <div className="description">
-        <h2>{item.restName}</h2>
+        <h2>{item.name}</h2>
         <div className="container2">
           <img
             src="https://static.vecteezy.com/system/resources/previews/003/672/373/original/junk-food-cartoon-design-vector.jpg"
