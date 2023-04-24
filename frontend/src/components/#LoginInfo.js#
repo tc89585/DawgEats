@@ -1,0 +1,33 @@
+
+func Login() {
+
+
+    function LoginBtn(props) {
+  return (
+    <button onClick={props.onClick}>
+      Login
+    </button>
+  );
+}
+function LogoutBtn(props) {
+  return (
+    <button onClick={props.onClick}>
+      Logout
+</button>
+);
+}
+function Dashboard() {
+const [loggedIn, setLoggedIn] = useState(true)
+const handleLogin = () => {
+setLoggedIn(true)
+}
+const handleLogout = () => {
+setLoggedIn(false)
+}
+let button;
+if (loggedIn) {
+ button = <LogoutBtn onClick={handleLogout}/>
+} else {
+button = <LoginBtn onClick={handleLogin}/>
+}
+}
