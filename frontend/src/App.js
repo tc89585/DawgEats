@@ -57,7 +57,7 @@ const App = () => {
           <Route
             exact
             path="/"
-            element={<HomePage isLoggedIn={isLoggedIn} />} // TODO change state
+            element={<HomePage isLoggedIn={userData} />} // TODO change state
           />
           <Route path="/create-item" element={<CreateRestaurantItem />} />
           <Route path="/create-user" element={<Createaccount />} />

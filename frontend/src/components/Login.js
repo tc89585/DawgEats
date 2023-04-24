@@ -14,7 +14,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 
 function Login() {
-  const [email, setEmail] = useState();
+  const [username, setUsername] = useState();
   const [password, setPassword] = useState();
   const [error, setError] = useState();
   const [loading, setLoading] = useState(false);
@@ -30,7 +30,7 @@ function Login() {
           className="dawg-eats-logo"
         />
       </div>
-      <form>
+      <form action={handleSubmit}>
         <h1 id="login-title">Login</h1>
         <br></br>
 
@@ -41,6 +41,7 @@ function Login() {
           id="username-field"
           name="username"
           placeholder="Username"
+          onChange = {e => setUsername(e.target.value)}
         />
         <br />
         <label for="password-field">Password:</label>
@@ -50,10 +51,12 @@ function Login() {
           id="password-field"
           class="login-form-field"
           placeholder="Password"
+          onChange = {e => setPassword(e.target.value)}
         ></input>
         <br></br>
         <Link to="/">
           <input
+            disabled = {loading}
             className="button"
             type="submit"
             value="Login"
@@ -75,26 +78,26 @@ function Login() {
     </div>
   );
 
-  // async function handleSubmit(e) {
-  //   e.preventDefault();
-  //   setLoading(true);
-  //   try {
-  //     const loginUser = { email, password };
-  //     const loginRes = await axios.post(
-  //       'http://localhost:3001/api/users/login',
-  //       loginUser
-  //     );
-  //     setUserData({
-  //       token: loginRes.data.token,
-  //       user: loginRes.data.user,
-  //     });
-  //     localStorage.setItem.setItem('auth.token', loginRes.data.token);
-  //     navigate('/');
-  //   } catch (err) {
-  //     setLoading(false);
-  //     error.response.data.msg && setError(err.response.data.msg);
-  //   }
-  // }
+  async function handleSubmit(e) {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      const loginUser = { username, password };
+      const loginRes = await axios.post(
+        'http://localhost:3001/api/users/login',
+        loginUser
+      );
+      setUserData({
+        token: loginRes.data.token,
+        user: loginRes.data.user,
+      });
+      localStorage.setItem.setItem('auth.token', loginRes.data.token);
+      navigate('/');
+    } catch (err) {
+      setLoading(false);
+      error.response.data.msg && setError(err.response.data.msg);
+    }
+  }
 }
 
 export default Login;
