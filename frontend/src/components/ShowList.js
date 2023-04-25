@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useParams, useNavigate } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import RestaurantCard from './RestaurantCard';
 import NavBar from './NavBar.js';
 import '../styles/ShowList.css';
@@ -7,7 +7,7 @@ import axios from 'axios';
 
 function ShowList() {
   const { userId } = useParams();
-  const navigate = useNavigate();
+
 
   const [items, setItems] = useState([]);
 
@@ -20,7 +20,9 @@ function ShowList() {
       .catch((err) => {
         console.log('Error from ShowList');
       });
-  }, []);
+  });
+
+  
 
   const onDelete = (id) => {
     axios
@@ -41,7 +43,7 @@ function ShowList() {
 
   return (
     <div className="ShowList">
-      <NavBar />
+      <NavBar userData />
       <div className="account-container">
         <div className>
           <br />

@@ -1,58 +1,54 @@
-import React from 'react';
+//import React from 'react';
 import NavBar from './NavBar.js';
 import Restaurant from './Restaurant.js';
 import RestaurantCard from './RestaurantCard.js';
-import { useState, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
-export default function HomePage(prop) {
+export default function HomePage() {
   /*dummy list for testing purposes*/
-  const [restaurants, setRestaurants] = useState([
-    {
-      id: 1,
-      restName: 'Taichi Bubble Tea',
-      address: '247 E Broad St, Athens, GA 30601',
-      contact: '706-395-6483',
-      cuisine: 'asian',
-      image:
-        'https://lh3.googleusercontent.com/p/AF1QipNrqoDjdkfcLJAIHgqim9ATpX5f0v8zgMVRCRia=s1360-w1360-h1020',
-      description: 'A Bubble tea spot',
-    },
-    {
-      id: 2,
-      restName: 'sdfgdsgs',
-      address: '247 E Broad St, Athens, GA 30601',
-      contact: '706-395-6483',
-      cuisine: 'asian',
-      image:
-        'https://lh3.googleusercontent.com/p/AF1QipNrqoDjdkfcLJAIHgqim9ATpX5f0v8zgMVRCRia=s1360-w1360-h1020',
-      description: 'A Bubble tea spot',
-    },
-    {
-      id: 3,
-      restName: 'agsaasgad',
-      address: '247 E Broad St, Athens, GA 30601',
-      contact: '706-395-6483',
-      cuisine: 'asian',
-      image:
-        'https://lh3.googleusercontent.com/p/AF1QipNrqoDjdkfcLJAIHgqim9ATpX5f0v8zgMVRCRia=s1360-w1360-h1020',
-      description: 'A Bubble tea spot',
-    },
-  ]);
+  const [restaurants, setRestaurants] = useState([]);
+  const[userId, setId] = useState();
 
-  const handleRemoveCard = (id) => {
-    let updatedList = restaurants.filter(
-      (restaurant) => !(restaurant.id === id)
-    );
-    setRestaurants(updatedList);
-  };
+    useEffect(() => {
+      axios
+        .get("http://localhost:3001/api/restaurants/")
+        .then((res) => {
+          setRestaurants(res.data);
+        })
+        .catch((err) => {
+          console.log('Error from HomePage');
+        });
+    }, []);
 
+    const[token, setToken] = useState();
+  
+  
+    useEffect(() =>{
+
+      const fetchData = async () => {
+         setToken(localStorage.getItem("auth-token"));
+        await setId(localStorage.getItem("auth-Id"));
+      }
+      fetchData();
+    }, []);
+    
+
+  //const handleRemoveCard = (id) => {
+   // let updatedList = restaurants.filter(
+   //   (restaurant) => !(restaurant.id === id)
+  //  );
+  //  setRestaurants(updatedList);
+ // };
+//console.log(prop);
   return (
     <div className="home-page">
+
       <NavBar />
-      {prop.isLoggedIn ? (
+      {token ? (
         <div>
-          <Link to="/create-item">
+          <Link to={`/create-item/${userId}`}>
             <img
               src="../images/plus-icon.svg"
               alt="plus icon"
