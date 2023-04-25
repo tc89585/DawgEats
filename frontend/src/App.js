@@ -5,6 +5,7 @@ import ShowList from './components/ShowList';
 import UpdateInfo from './components/UpdateInfo';
 import Createaccount from './components/Createaccount';
 import Login from './components/Login';
+import DisplayItem from './components/DisplayItem'
 import HomePage from './components/HomePage';
 import UserContext from './context/UserContext';
 import axios from "axios"; 
@@ -70,6 +71,7 @@ import { useEffect } from "react";
           <Route path="/login" element={<Login />} />
           <Route path="/edit-item/:id/edit/:userId" element={<UpdateInfo />} />
           <Route path="/show-item/:userId" element={<ShowList />} />
+          <Route path="/display-item/:id" element={<DisplayItem />} />
         </Routes>
       </div> 
     </Router>

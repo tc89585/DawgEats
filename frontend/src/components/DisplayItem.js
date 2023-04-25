@@ -2,15 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import '../App.css';
 import axios from 'axios';
+import './DisplayItem.css';
 
-function DisplayItem(props) {
+function DisplayItem() {
     const [item, setItem] = useState({});
 
-    const { id } = useParams();
-    const navigate = useNavigate();
+	const navigate = useNavigate();
+    const {id} = useParams();
+
     useEffect(() => {
 	axios
-	    .get(`http://localhost:3000/api/items/${id}`)
+	    .get(`http://localhost:3001/api/restaurants/restaurant/${id}`)
 	    .then((res) => {
 		setItem(res.data);
 	    })
@@ -19,52 +21,42 @@ function DisplayItem(props) {
 	    });
     }, [id]);
 
-    const onDeleteClick = (id) => {
-	axios
-	    .delete(`http://localhost:3000/api/items/${id}`)
-	    .then((res) => {
-		navigate('/');
-	    })
-	    .catch((err) => {
-		console.log('Error form DisplayItem_deleteClick');
-	    });
-    };
 
     const ItemItem = (
 	<div>
-	    <table className='table table-hover table-dark'>
+	    <table className='table'>
 		<tbody>
 		    <tr>
-			<th scope='row'>1</th>
-			<td>Name</td>
-			<td>{item.restName}</td>
+			<th scope='row'></th>
+			<td>Restaurant's Name</td>
+			<td>{item.name}</td>
 		    </tr>
 		    <tr>
-			<th scope='row'>5</th>
+			<th scope='row'></th>
 			<td>Address</td>
 			<td>{item.address}</td>
 		    </tr>
 		    <tr>                                                                  
-			<th scope='row'>5</th>                                              
-			<td>contact</td>                                                    
-			<td>{item.contact}</td>                                             
+			<th scope='row'></th>                                              
+			<td>Contact</td>                                                    
+			<td>{item.number}</td>                                             
 		    </tr>
 		    <tr>                                                               
                         
-			<th scope='row'>5</th>                                             
+			<th scope='row'></th>                                             
                         
-			<td>cuisine</td>                                                   
+			<td>Cuisine</td>                                                   
                         
 			<td>{item.cuisine}</td>                                            
                         
 		    </tr> 
 		    <tr>
-			<th scope='row'>5</th>
-			<td>image</td>
-			<td>{item.image}</td>
+			<th scope='row'></th>
+			<td>Image </td>
+			<td><img src = {item.imageUrl} alt = {item.name}/></td>
 		    </tr>
 		    <tr>
-			<th scope='row'>6</th>
+			<th scope='row'></th>
 			<td>Description</td>
 			<td>{item.description}</td>
 		    </tr>
@@ -72,41 +64,36 @@ function DisplayItem(props) {
 	    </table>
 	</div>
     );
+ 
+	const goBack =() => {
+		navigate(-1);
+	}
 
     return(
+
+		
 	<div className='DisplayItem'>
 	    <div className='container'>
+			<div className = "back">
+		<button className = " backButton" onClick={goBack}>
+			    <img
+				src="https://as2.ftcdn.net/v2/jpg/02/02/93/99/1000_F_202939931_iHgLHxeBiSgNHbPvCSCdEEEtl391oRLM.jpg"
+				alt="back"
+				className="BackImg"
+			    />
+			</button>
+			</div>
 		<div className='row'>
 		    <div >
 			<br /> <br />
-			<Link to='/'>
-			    Show Item List
-			</Link>
 		    </div>
 		    <br />
 		    <div >
-			<h1 >Item's Record</h1>
-			<p>View Item's Info</p>
+			<h1 >Restaurant</h1>
+			<p>View Restaurant's Info</p>
 			<hr /> <br />
 		    </div>
 		    <div>{ItemItem}</div>
-		    <div className>
-			<button
-			    type='button'
-			    onClick={() => {
-				onDeleteClick(item._id);
-			    }}
-			>
-			    Delete Item
-			</button>
-		    </div>
-		    <div>
-			<Link
-			    to={`/edit-item/${item._id}`}
-			>
-			    Edit Item
-			</Link>
-		    </div>
 		</div>
 	    </div>
 	</div>
