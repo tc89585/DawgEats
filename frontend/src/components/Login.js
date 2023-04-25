@@ -20,7 +20,7 @@ function Login() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { setUserData } = useContext(UserContext);
-
+ 
   return (
     <div className="login">
       <div className="logo-container">
@@ -90,7 +90,8 @@ function Login() {
         token: loginRes.data.token,
         user: loginRes.data.user,
       });
-      localStorage.setItem("auth.token", loginRes.data.token);
+      localStorage.setItem("auth-token", loginRes.data.token);
+      localStorage.setItem("auth-Id", loginRes.data.user.id);
       navigate('/');
     } catch (err) {
       setLoading(false);

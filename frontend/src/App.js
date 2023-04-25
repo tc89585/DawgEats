@@ -1,6 +1,6 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import CreateRestaurantItem from './components/CreateRestaurantItem';
-import { BrowserRouter as Router, Link, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import ShowList from './components/ShowList';
 import UpdateInfo from './components/UpdateInfo';
 import Createaccount from './components/Createaccount';
@@ -9,20 +9,22 @@ import HomePage from './components/HomePage';
 import UserContext from './context/UserContext';
 import axios from "axios"; 
 import { useEffect } from "react";
-
+//export const userContext = React.createContext(null);
 //import React, { useState, useContext } from "react"; 
 
 
-const App = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState({
-    token: undefined,
-    user: undefined,
-  });
+ const App = () => {
+   
+//   const [isLoggedIn, setIsLoggedIn] = useState({
+//     token: undefined,
+//     user: undefined,
+//   });
  //change above block later
   const [userData, setUserData] = useState({
     token: undefined,
     user: undefined,
   });
+
   useEffect(() => {
     const checkifLoggedIn = async() => {
       let token = localStorage.getItem("auth-token");
@@ -50,15 +52,18 @@ const App = () => {
     checkifLoggedIn();
   }, []);
 
+ //console.log(userData.user.id);
+
   return (
     <UserContext.Provider value={{ userData, setUserData}} >
+
     <Router>
       <div>
         <Routes>
           <Route
             exact
             path="/"
-            element={<HomePage isLoggedIn={userData} />} // TODO change state
+            element={<HomePage/>} // TODO change state
           />
           <Route path="/create-item/:userId" element={<CreateRestaurantItem />} />
           <Route path="/create-user" element={<Createaccount />} />
