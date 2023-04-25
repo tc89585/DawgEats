@@ -40,6 +40,7 @@
 
 .logo {
   width: 170px;
+  cursor: pointer;
 }
 
 .bar {
@@ -66,6 +67,7 @@ input[type='password'] {
   position: relative;
   top: 5px;
   right: 6px;
+  cursor: pointer;
 }
 
 #navbar-search-field {
