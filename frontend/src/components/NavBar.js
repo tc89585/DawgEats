@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext} from 'react';
 import '../styles/NavBar.css';
 import { Link, useNavigate } from 'react-router-dom';
 import UserContext from "../context/UserContext"; 
+import userpic from '../user.png';
 
 const NavBar = () => {
 
@@ -65,7 +66,7 @@ const onLogOut = async(e)  => {
       <div className="account-button">
         <Link to={`/show-item/${userId}`}>
           <img
-            src="./images/user.png"
+            src= {userpic}
             class="account-icon"
             alt="account icon"
           />
