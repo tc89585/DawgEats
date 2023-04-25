@@ -10,7 +10,7 @@ import axios from "axios";
 import UserContext from "../context/UserContext"; 
 import { useNavigate, Link } from "react-router-dom";
 
-import { BrowserRouter } from 'react-router-dom';
+//import { BrowserRouter } from 'react-router-dom';
 
 
 function Login() {
@@ -30,7 +30,7 @@ function Login() {
           className="dawg-eats-logo"
         />
       </div>
-      <form action={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <h1 id="login-title">Login</h1>
         <br></br>
 
@@ -54,7 +54,6 @@ function Login() {
           onChange = {e => setPassword(e.target.value)}
         ></input>
         <br></br>
-        <Link to="/">
           <input
             disabled = {loading}
             className="button"
@@ -62,7 +61,6 @@ function Login() {
             value="Login"
             id="login-form-submit"
           ></input>
-        </Link>
 
         <br></br>
         <br></br>
@@ -82,20 +80,21 @@ function Login() {
     e.preventDefault();
     setLoading(true);
     try {
+      // eslint-disable-next-line no-restricted-globals
       const loginUser = { username, password };
       const loginRes = await axios.post(
-        'http://localhost:3001/api/users/login',
+        "http://localhost:3001/api/users/login",
         loginUser
       );
       setUserData({
         token: loginRes.data.token,
         user: loginRes.data.user,
       });
-      localStorage.setItem.setItem('auth.token', loginRes.data.token);
+      localStorage.setItem("auth.token", loginRes.data.token);
       navigate('/');
     } catch (err) {
       setLoading(false);
-      error.response.data.msg && setError(err.response.data.msg);
+      err.response.data.msg && setError(err.response.data.msg);
     }
   }
 }

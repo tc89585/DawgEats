@@ -11,8 +11,8 @@ userRouter.use(cors({ origin: true, credentials: true }));
 // Signup Route
 userRouter.post('/signup', async (req, res) => {
   try {
-    const { name, password, confirmPassword } = req.body;
-    if (!name || !password || !confirmPassword) {
+    const { username, password, confirmPassword } = req.body;
+    if (!username || !password || !confirmPassword) {
       return res
         .status(400)
         .json({ msg: 'Please enter all the required fields' });
@@ -25,15 +25,15 @@ userRouter.post('/signup', async (req, res) => {
     if (confirmPassword !== password) {
       return res.status(400).json({ msg: 'Passwords do not match' });
     }
-    const existingUser = await User.findOne({ name });
+    const existingUser = await User.findOne({ username });
     if (existingUser) {
       return res.status(400).json({ msg: 'User already exists' });
     }
     const hashedPassword = await bcryptjs.hash(password, 8);
-    const newUser = new User({ name, password: hashedPassword });
+    const newUser = new User({ username, password: hashedPassword });
     const savedUser = await newUser.save();
-    console.log(savedUser.name);
-    res.json(savedUser.name);
+    console.log(savedUser.username);
+    res.json(savedUser.username);
   } catch (err) {
     res.status(400).json({ msg: err.message });
   }
@@ -42,16 +42,18 @@ userRouter.post('/signup', async (req, res) => {
 //login route
 userRouter.post('/login', async (req, res) => {
   try {
-    const { name, password } = req.body;
-    if (!name || !password) {
+    const { username, password } = req.body;
+    if (!username || !password) {
       return res
         .status(400)
         .json({ msg: 'Please enter all the required fields' });
     }
 
-    const user = await User.findOne({ name });
+    const user = await User.findOne({ username });
     if (!user) {
-      return res.status(400).send({ msg: 'user not found' });
+      return res
+        .status(400)
+        .send({ msg: 'user with this name does not exist!' });
     }
 
     const isMatch = await bcryptjs.compare(password, user.password);
@@ -60,7 +62,7 @@ userRouter.post('/login', async (req, res) => {
       return res.status(400).json({ msg: 'Incorrect password' });
     }
     const token = jwt.sign({ id: user._id }, 'passwordKey');
-    res.json({ token, user: { id: user._id, name: user.name } });
+    res.json({ token, user: { id: user._id, username: user.username } }); //change back to name if broken
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
