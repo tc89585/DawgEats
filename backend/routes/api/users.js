@@ -46,21 +46,22 @@ userRouter.post('/login', async (req, res) => {
     if (!username || !password) {
       return res
         .status(400)
-        .json({ msg: "Please enter all the required fields" });
+        .json({ msg: 'Please enter all the required fields' });
     }
 
-    const user = await User.findOne({username});
+    const user = await User.findOne({ username });
     if (!user) {
-      return res.status(400).send({ msg: "user with this name does not exist!" });
+      return res
+        .status(400)
+        .send({ msg: 'user with this name does not exist!' });
     }
 
     const isMatch = await bcryptjs.compare(password, user.password);
 
     if (!isMatch) {
-        console.log(user);
-        return res.status(400).json({ msg: "Incorrect password" });
+      return res.status(400).json({ msg: 'Incorrect password' });
     }
-    const token = jwt.sign({ id: user._id }, "passwordKey");
+    const token = jwt.sign({ id: user._id }, 'passwordKey');
     res.json({ token, user: { id: user._id, username: user.username } }); //change back to name if broken
   } catch (err) {
     res.status(500).json({ error: err.message });
