@@ -67,7 +67,7 @@ function ShowList() {
             {items.map((item, index) => {
               return (
                 <div>
-                  <RestaurantCard item={items[index]} />
+                  <RestaurantCard item={items[index]} id = {items[index]._id}/>
                   <div className>
                     <div className="row">
                       <div className="col">
