@@ -9,43 +9,39 @@ import axios from 'axios';
 export default function HomePage() {
   /*dummy list for testing purposes*/
   const [restaurants, setRestaurants] = useState([]);
-  const[userId, setId] = useState();
+  const [userId, setId] = useState();
 
-    useEffect(() => {
-      axios
-        .get("http://localhost:3001/api/restaurants/")
-        .then((res) => {
-          setRestaurants(res.data);
-        })
-        .catch((err) => {
-          console.log('Error from HomePage');
-        });
-    }, []);
+  useEffect(() => {
+    axios
+      .get('http://localhost:3001/api/restaurants/')
+      .then((res) => {
+        setRestaurants(res.data);
+      })
+      .catch((err) => {
+        console.log('Error from HomePage');
+      });
+  }, []);
 
-    const[token, setToken] = useState();
-  
-  
-    useEffect(() =>{
+  const [token, setToken] = useState();
 
-      const fetchData = async () => {
-         setToken(localStorage.getItem("auth-token"));
-        await setId(localStorage.getItem("auth-Id"));
-      }
-      fetchData();
-    }, []);
-    
+  useEffect(() => {
+    const fetchData = async () => {
+      setToken(localStorage.getItem('auth-token'));
+      await setId(localStorage.getItem('auth-Id'));
+    };
+    fetchData();
+  }, []);
 
   //const handleRemoveCard = (id) => {
-   // let updatedList = restaurants.filter(
-   //   (restaurant) => !(restaurant.id === id)
+  // let updatedList = restaurants.filter(
+  //   (restaurant) => !(restaurant.id === id)
   //  );
   //  setRestaurants(updatedList);
- // };
-//console.log(prop);
+  // };
+  //console.log(prop);
   return (
     <div className="home-page">
-
-      <NavBar />
+      <NavBar restaurants={restaurants} setRestaurants={setRestaurants} />
       {token ? (
         <div>
           <Link to={`/create-item/${userId}`}>
