@@ -23,7 +23,7 @@ const NavBar = () => {
       <button id="login-button">Login</button>
 
       <div className="account-button">
-        <Link to="/show-item">
+        <Link to={`/show-item/`}>
           <img
             src="./images/user.png"
             class="account-icon"

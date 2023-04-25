@@ -6,14 +6,14 @@ import UserContext from '../context/UserContext';
 import axios from 'axios';
 
 function CreateAccount() {
-  const [name, setName] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  //const { setUserData } = useContext(UserContext);
+  const { setUserData } = useContext(UserContext);
   return (
     <div className="create-account">
       <div className="acc-img">
@@ -23,13 +23,7 @@ function CreateAccount() {
         <h2>Create Account</h2>
         <label for="name">Name:</label>
         <br />
-        <input
-          type="text"
-          id="name"
-          name="name"
-          placeholder="Name"
-          onChange={(e) => setName(e.target.value)}
-        />
+        <input type="text" id="name" name="name" placeholder="Name" />
         <br />
         <label for="username">Username:</label>
         <br />
@@ -38,6 +32,7 @@ function CreateAccount() {
           id="username"
           name="username"
           placeholder="username"
+          onChange={(e) => setUsername(e.target.value)}
         />
         <br />
         <label for="password">Password:</label>
@@ -88,26 +83,26 @@ function CreateAccount() {
     e.preventDefault();
     setLoading(true);
     try {
-      const newUser = { name, password, confirmPassword };
+      const newUser = { username, password, confirmPassword };
       console.log(newUser);
       await axios.post('http://localhost:3001/api/users/signup', newUser);
-      /*const loginResult = await axios.post(
+      const loginResult = await axios.post(
         'http://localhost:3001/api/users/login',
         {
-          name,
+          username,
           password,
         }
-      ); */
-      /*setUserData({
+      );
+      setUserData({
         token: loginResult.data.token,
         user: loginResult.data.name,
-      }); */
-      //localStorage.setItem('auth-token', loginResult.data.token);
+      });
+      localStorage.setItem('auth-token', loginResult.data.token);
       navigate('/');
     } catch (err) {
       setLoading(false);
       console.log(err);
-      //err.response.data.msg && setError(err.response.data.msg);
+      err.response.data.msg && setError(err.response.data.msg);
     }
   }
 }
