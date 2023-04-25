@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react';
 import '../styles/NavBar.css';
 import { Link, useNavigate } from 'react-router-dom';
-import UserContext from '../context/UserContext';
 import Restaurant from './Restaurant';
+import UserContext from "../context/UserContext"; 
+import userpic from '../user.png';
 
 const NavBar = ({ restaurants, setRestaurants }) => {
   const [searchValue, setSearchValue] = useState('');
@@ -60,6 +61,7 @@ const NavBar = ({ restaurants, setRestaurants }) => {
           onClick={handleSearch}
         />
       </div>
+      
       {token ? (
         <button onClick={onLogOut} id="login-button">
           Logout
@@ -74,7 +76,7 @@ const NavBar = ({ restaurants, setRestaurants }) => {
         <div className="account-button">
           <Link to={`/show-item/${userId}`}>
             <img
-              src="./images/user.png"
+              src={userPic}
               class="account-icon"
               alt="account icon"
             />
