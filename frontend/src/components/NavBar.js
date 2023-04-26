@@ -75,7 +75,11 @@ const NavBar = ({ restaurants, setRestaurants }) => {
       {token ? (
         <div className="account-button">
           <Link to={`/show-item/${userId}`}>
-            <img src={userpic} class="account-icon" alt="account icon" />
+            <img
+              src={userpic}
+              class="account-icon"
+              alt="account icon"
+            />
           </Link>
         </div>
       ) : (
