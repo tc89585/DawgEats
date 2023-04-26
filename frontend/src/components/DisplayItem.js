@@ -25,39 +25,42 @@ function DisplayItem() {
     const ItemItem = (
 	<div>
 	    <table className='table'>
-		<tbody>
+		<tbody className='tbody'>
 		    <tr>
 			<th scope='row'></th>
-			<td>Restaurant's Name</td>
+			<td className='bold'>Restaurant's Name:</td>
 			<td>{item.name}</td>
 		    </tr>
+			<br /> <br />
 		    <tr>
 			<th scope='row'></th>
-			<td>Address</td>
+			<td className='bold'>Address:</td>
 			<td>{item.address}</td>
+			<br /> <br />
 		    </tr>
 		    <tr>                                                                  
 			<th scope='row'></th>                                              
-			<td>Contact</td>                                                    
-			<td>{item.number}</td>                                             
+			<td className='bold'>Contact:</td>                                                    
+			<td>{item.number}</td> 
+			<br /> <br />                                            
 		    </tr>
 		    <tr>                                                               
                         
 			<th scope='row'></th>                                             
                         
-			<td>Cuisine</td>                                                   
+			<td className='bold'>Cuisine:</td>                                                   
                         
 			<td>{item.cuisine}</td>                                            
                         
 		    </tr> 
 		    <tr>
 			<th scope='row'></th>
-			<td>Image </td>
-			<td><img src = {item.imageUrl} alt = {item.name}/></td>
+			<td className='bold'>Image: </td>
+			<td><img className='image' src = {item.imageUrl} alt = {item.name}/></td>
 		    </tr>
 		    <tr>
 			<th scope='row'></th>
-			<td>Description</td>
+			<td className='bold'>Description:</td>
 			<td>{item.description}</td>
 		    </tr>
 		</tbody>
