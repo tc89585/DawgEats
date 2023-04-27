@@ -86,7 +86,7 @@ function CreateAccount() {
       const newUser = { username, password, confirmPassword };
       console.log(newUser);
       await axios.post('http://localhost:3001/api/users/signup', newUser);
-      const loginResult = await axios.post(
+      /* const loginResult = await axios.post(
         'http://localhost:3001/api/users/login',
         {
           username,
@@ -96,9 +96,10 @@ function CreateAccount() {
       setUserData({
         token: loginResult.data.token,
         user: loginResult.data.name,
-      });
-      localStorage.setItem('auth-token', loginResult.data.token);
-      navigate('/');
+      });  
+      localStorage.setItem('auth-token', loginResult.data.token); 
+      navigate('/');*/
+      navigate('/login');
     } catch (err) {
       setLoading(false);
       console.log(err);
