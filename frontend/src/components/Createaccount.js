@@ -99,7 +99,6 @@ function CreateAccount() {
       });  
       localStorage.setItem('auth-token', loginResult.data.token); 
       navigate('/');*/
-      alert('Created account successfully !');
       navigate('/login');
     } catch (err) {
       setLoading(false);
